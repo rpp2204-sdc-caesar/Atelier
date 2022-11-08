@@ -8,6 +8,7 @@ const expressStaticGzip = require('express-static-gzip');
 const mongo = require("./controller");
 
 
+
 const app = express();
 // Compress all HTTP responses
 app.use(cors());
@@ -24,7 +25,6 @@ app.get('.js*', (req, res, next) => {
 });
 
 let port = process.env.PORT;
-
 
 app.get("/products", (req, res) => {
   //console.log(req.query);
@@ -96,10 +96,6 @@ app.get('/products/:product_id/related', function(req, res) {
     return res.status(500);
   });
 });
-
-app.get("/[0-9]{0,5}$", (req, res) => {
-  res.sendFile('index.html', { root: './client/dist/' })
-})
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`);
